@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заявка на администратора Discord сервера</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #7289da, #4e5d94);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(40, 43, 48, 0.95);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #7289da;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            color: #b9bbbe;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .form-section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #7289da;
+            border-bottom: 2px solid #7289da;
+            padding-bottom: 5px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px 15px;
+        }
+        
+        .form-group {
+            flex: 1 0 300px;
+            padding: 0 10px;
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #36393f;
+            border-radius: 5px;
+            background: #36393f;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: #7289da;
+            outline: none;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #ff5c5c;
+        }
+        
+        .btn-submit {
+            background: #7289da;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: block;
+            margin: 30px auto 10px;
+            width: 200px;
+            font-weight: 600;
+        }
+        
+        .btn-submit:hover {
+            background: #677bc4;
+        }
+        
+        .notification {
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .success {
+            background: #43b581;
+        }
+        
+        .error {
+            background: #f04747;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #b9bbbe;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .form-group {
+                flex: 1 0 100%;
+            }
+            
+            .btn-submit {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">⚙️</div>
+            <h1>Заявка на администратора Discord сервера</h1>
+            <p class="description">Заполните форму ниже, чтобы подать заявку на позицию администратора нашего Discord сообщества. Мы рассмотрим вашу заявку и свяжемся с вами в ближайшее время.</p>
+        </header>
+        
+        <form id="adminApplication">
+            <div class="form-section">
+                <h2 class="section-title">Личная информация</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullname" class="required">ФИО</label>
+                        <input type="text" id="fullname" name="fullname" required placeholder="Иванов Иван Иванович">
+                    </div>
+                    <div class="form-group">
+                        <label for="age" class="required">Возраст</label>
+                        <input type="number" id="age" name="age" required min="16" placeholder="18">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="discord" class="required">Discord тег</label>
+                        <input type="text" id="discord" name="discord" required placeholder="Username#1234">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="required">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="example@mail.com">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2 class="section-title">Опыт и навыки</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="experience" class="required">Опыт администрирования</label>
+                        <select id="experience" name="experience" required>
+                            <option value="">Выберите вариант</option>
+                            <option value="none">Нет опыта</option>
+                            <option value="less1">Менее 1 года</option>
+                            <option value="1-2">1-2 года</option>
+                            <option value="3+">3 года и более</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="time" class="required">Доступное время в день (часов)</label>
+                        <input type="number" id="time" name="time" required min="1" max="24" placeholder="4">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="skills" class="required">Навыки</label>
+                    <textarea id="skills" name="skills" required placeholder="Опишите ваши навыки, которые могут быть полезны для администрирования сервера..."></textarea>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2 class="section-title">Дополнительная информация</h2>
+                <div class="form-group">
+                    <label for="motivation" class="required">Почему вы хотите стать администратором?</label>
+                    <textarea id="motivation" name="motivation" required placeholder="Расскажите о вашей мотивации..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ideas">Ваши идеи для улучшения сервера</label>
+                    <textarea id="ideas" name="ideas" placeholder="Есть ли у вас идеи по развитию и улучшению сервера?"></textarea>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-submit">Отправить заявку</button>
+        </form>
+        
+        <div id="notification" class="notification"></div>
+    </div>
+    
+    <footer>
+        <p>© 2023 Discord Server Administration | Все права защищены</p>
+    </footer>
+
+    <script>
+        document.getElementById('adminApplication').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Сбор данных формы
+            const formData = {
+                fullname: document.getElementById('fullname').value,
+                age: document.getElementById('age').value,
+                discord: document.getElementById('discord').value,
+                email: document.getElementById('email').value,
+                experience: document.getElementById('experience').value,
+                time: document.getElementById('time').value,
+                skills: document.getElementById('skills').value,
+                motivation: document.getElementById('motivation').value,
+                ideas: document.getElementById('ideas').value,
+                timestamp: new Date().toLocaleString('ru-RU')
+            };
+            
+            // В реальном проекте здесь был бы код для отправки данных на сервер
+            // Например, с использованием fetch API или XMLHttpRequest
+            
+            // Эмуляция отправки
+            const notification = document.getElementById('notification');
+            notification.textContent = 'Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.';
+            notification.classList.add('success');
+            notification.style.display = 'block';
+            
+            // Вывод данных в консоль (в реальном проекте здесь была бы отправка на сервер)
+            console.log('Данные заявки:', formData);
+            alert('В реальном проекте эти данные были бы отправлены на сервер и на вашу почту. Проверьте консоль для просмотра данных.');
+            
+            // Очистка формы
+            this.reset();
+            
+            // Скрыть уведомление через 5 секунд
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
